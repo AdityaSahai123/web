@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int bfs(){
+    deueue<int>q;
+
+    q.push_back(1);
+    lev[1]=0;
+
+    while(!q.empty())
+    {
+        int cv= q.front();
+        q.pop_front();
+
+        for(auto child: g[cv])
+        {
+            int child_v= child.first;
+            int wt= child.second;
+
+            if(lev[cv]+wt<lev[child_v])
+            {
+                lev[child_v]=lev[cv]+wt;
+
+                if(wt==1)
+                {
+                    q.push_back(child_v);
+                }
+                else
+                    q.push_back(child_v);
+            }
+        }
+    }
+
+    return lev[n];
+    
+
+}
